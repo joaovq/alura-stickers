@@ -33,7 +33,7 @@ public class GeneratorStickers {
 //        escrever uma frase na nova imagem.
         graphics.drawString("TOPZERA", 180,newHeight-100);
 //        escrever a nova imagem em um arquivo
-        ImageIO.write(image1,"png", new File("saida/"+nameFile));
+        ImageIO.write(image1,"png", new File("outputStickers/"+nameFile));
 
         System.out.println("\nSticker Generated!!");
     }
