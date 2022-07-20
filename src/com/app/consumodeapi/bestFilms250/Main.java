@@ -52,10 +52,10 @@ public class Main {
 
         // pegar so os dados que interessam (titulo, poster, classificação
         var parser =new JsonParser();
-        List<Map<String,String>> listOfFilms = parser.parse(body);
+        List<Map<String,String>> listOfFilms250 = parser.parse(body);
 
-        System.out.println(listOfFilms.size());
-        System.out.println(listOfFilms.get(0));
+        System.out.println(listOfFilms250.size());
+        System.out.println(listOfFilms250.get(0));
 
         // Exibir  e manipular os dados
 
@@ -63,10 +63,11 @@ public class Main {
 
 //        Utilizando emojis e mostrando os filmes da lista
         for (int i = 0; i<10 ; i++) {
-            Map<String,String> film = listOfFilms.get(i);
+            Map<String,String> film = listOfFilms250.get(i);
 
 //            Produzindo figurinhas para cada imagem dos filmes
-            String urlImage = film.get("image");
+            String urlImage = film.get("image")
+                                            .replaceAll("(@+)(.*).jpg$", "$1.jpg");
             String tile = film.get("title");
             String nameFile = tile + ".png";
 
