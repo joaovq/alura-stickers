@@ -1,11 +1,12 @@
 package com.app.consumodeapi;
 
 import com.app.consumodeapi.ClientHTTP.ClientHTTP;
+import com.app.consumodeapi.ContentExtractors.ContentExtractorIMDB;
+import com.app.consumodeapi.ContentExtractors.ContentExtractorNasa;
 
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
-import java.util.Map;
 
 /*
 Desafios desta aula
@@ -37,39 +38,43 @@ public class Main {
         // Pegar os dados do Imdb
         // Fazer uma conexão HTTP e buscar os top 250 filmes
 
-        String urlIMDB = "https://alura-filmes.herokuapp.com/conteudos";
-        String urlNasa = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
+//        String urlIMDB = "https://alura-filmes.herokuapp.com/conteudos";
+//        ContentExtractor extractorIMDB = new ContentExtractorIMDB();
+        String urlNasa = "https://api.nasa.gov/planetary/apod?api_key=1VGecNjTX2r" +
+                                        "TIrmmRQkvMGf9OWPuTWQr9mtPlSD5&start_date=2022-06-12&end_date=2022-06-14";
+        ContentExtractor extractorNasa = new ContentExtractorNasa();
 
         var http = new ClientHTTP();
-        String json = http.searchData(urlIMDB);
+        String json = http.searchData(urlNasa);
+
 
         // pegar so os dados que interessam (titulo, poster, classificação
-        var parser =new JsonParser();
-        List<Map<String,String>> listOfContents = parser.parse(json);
 
-        System.out.println(listOfContents.size());
-        System.out.println(listOfContents.get(0));
+        List<Content> contentList = extractorNasa.extract(json);
 
         // Exibir  e manipular os dados
 
         GeneratorStickers stickers = new GeneratorStickers();
 
 //        Utilizando emojis e mostrando os filmes da lista
-        for (int i = 0; i<10 ; i++) {
-            Map<String,String> film = listOfContents.get(i);
+        for(int i = 0; i<contentList.size() ; i++){
+            Content content = contentList.get(i);
 
 //            Produzindo figurinhas para cada imagem dos filmes
-            String urlImage = film.get("image")
-                                            .replaceAll("(@+)(.*).jpg$", "$1.jpg");
-            String tile = film.get("title");
-            String nameFile = tile + ".png";
 
-                InputStream inputStream = new URL(urlImage).openStream();
+                InputStream inputStream = new URL(content.getUrlImage()).openStream();
+                String nameFile = content.getTitle() + ".png";
 
-                stickers.create(inputStream, nameFile);
+            stickers.create(inputStream, nameFile);
 
-            System.out.println("\u001b[1m \u2B50 ⭐ Ranking \u2B50 ⭐ : \u001b[37m \u001b[44m"+film.get("rank")+"\u001b[m\n Title: "
-                    +film.get("title") + "\n Imdb Rating: " + film.get("imDbRating") +"\n Pôster: "+ film.get("image"));
+//                Mostrar as fotos e fazer stickers consumindo API da Nasa
+            System.out.println("Title: "
+                    +content.getTitle() + "\n Image: "+ content.getUrlImage());
+
+//          para mostrar os filmes do IMDB
+      /*      System.out.println("\u001b[1m \u2B50 ⭐ Ranking \u2B50 ⭐ : \u001b[37m \u001b[44m"+content.get("rank")+
+                                "\u001b[m\n Title: " +content.get("title") + "\n Imdb Rating: "
+                         + content.get("imDbRating") +"\n Pôster: "+ content.get("image"));*/
         }
     }
 }
