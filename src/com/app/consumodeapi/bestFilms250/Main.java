@@ -22,8 +22,7 @@ TODO: Colocar a chave da API do IMDB em algum lugar fora do código como um arqu
 (p. ex, um arquivo .properties) ou
 uma variável de ambiente
 
-TODO: Mudar o JsonParser para usar uma biblioteca de
-parsing de JSON como Jackson ou GSON
+TODO: Mudar o JsonParser para usar uma biblioteca de parsing de JSON como Jackson ou GSON
 
  TODO: Desafio supremo: criar alguma maneira para você dar uma avaliação ao filme,
 puxando de algum arquivo de configuração OU pedindo a avaliação para o usuário digitar no terminal.
@@ -62,9 +61,10 @@ public class Main {
 
         GeneratorStickers stickers = new GeneratorStickers();
 
-//        Utilizando emojis
+//        Utilizando emojis e mostrando os filmes da lista
         for (Map<String,String> film: listOfFilms
              ) {
+//            Produzindo figurinhas para cada imagem dos filmes
             String urlImage = film.get("image");
             String tile = film.get("title");
             String nameFile = tile + ".png";
