@@ -62,8 +62,9 @@ public class Main {
         GeneratorStickers stickers = new GeneratorStickers();
 
 //        Utilizando emojis e mostrando os filmes da lista
-        for (Map<String,String> film: listOfFilms
-             ) {
+        for (int i = 0; i<10 ; i++) {
+            Map<String,String> film = listOfFilms.get(i);
+
 //            Produzindo figurinhas para cada imagem dos filmes
             String urlImage = film.get("image");
             String tile = film.get("title");
