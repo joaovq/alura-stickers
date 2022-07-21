@@ -17,7 +17,7 @@ public class ClientHTTP {
             System.out.println(body);
             return body;
          } catch (IOException | InterruptedException e){
-             throw  new RuntimeException(e);
+             throw new RuntimeException(e);
          }
 
      }
