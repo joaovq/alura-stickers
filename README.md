@@ -4,6 +4,8 @@ Projeto criado para praticar consumo de API's e arquivos, feito na imersão Java
  
 Site da imersão: https://www.alura.com.br/imersao-java
 
+Seguindo no meu readme, vou detalhar um pouco do meu aprendizado nesses 5 dias de imersão.
+
 # ⚙️ O que o projeto faz
 
 - Consumo os dados de uma API.
@@ -25,10 +27,18 @@ O objetivo deste projeto é desenvolver uma aplicação que faça o consumo de u
 + [API do IMDB](https://imdb-api.com/)
 
 + [API da Nasa](https://api.nasa.gov/)
+<div align="center" display="flex" flex-direction = "row">
+ <img src="https://www.codeproject.com/KB/java/Graphic_Context/300px-Java_logo_svg.png" width="100px">
 
- ![INTELLIJ](https://financesonline.com/uploads/2019/08/IntelliJ-Idea-logo1.png)  ![JAVA](https://www.codeproject.com/KB/java/Graphic_Context/300px-Java_logo_svg.png)
+</div>
 
+<br>
 
+# Aula 1
+
+# Aula 2
+
+# Aula 3
 
 # 💡 Como os Usuários podem usar esse projeto?
 
